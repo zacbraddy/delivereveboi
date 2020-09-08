@@ -3,6 +3,11 @@
   import DarkModeButton from "../components/atoms/DarkModeButton.svelte";
   import Header from "../components/molecules/Header.svelte";
   import StartRun from "../components/molecules/StartRun.svelte";
+  import currentRunStore from "../stores/current-run-store.js";
+
+  function onStartingIskChange(ev) {
+    currentRunStore.setStartingIsk(ev.target.value);
+  }
 </script>
 
 <svelte:head>
@@ -13,6 +18,8 @@
 
 <Header />
 
-<LabelledInput id="startingIsk">Starting isk value</LabelledInput>
+<LabelledInput id="startingIsk" on:input={onStartingIskChange}>
+  Starting isk value
+</LabelledInput>
 
 <StartRun />
