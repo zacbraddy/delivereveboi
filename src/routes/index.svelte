@@ -1,6 +1,15 @@
+<script>
+  import LabelledInput from "../components/atoms/LabelledInput.svelte";
+  import DarkModeButton from "../components/atoms/DarkModeButton.svelte";
+  import Header from "../components/molecules/Header.svelte";
+</script>
+
 <svelte:head>
   <title>Delivereve Boi</title>
 </svelte:head>
 
-<h1>Delivereve Boi</h1>
-<h2>For when it absolutely positively has be delivered in 12 parsecs</h2>
+<DarkModeButton />
+
+<Header />
+
+<LabelledInput id="startingIsk">Starting isk value</LabelledInput>

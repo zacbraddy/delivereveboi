@@ -1,19 +1,14 @@
-describe('Sapper template app', () => {
-	beforeEach(() => {
-		cy.visit('/')
-	});
+describe("General tests", () => {
+  beforeEach(() => {
+    cy.clearLocalStorage();
+    cy.visit("/");
+  });
 
-	it('has the correct <h1>', () => {
-		cy.contains('h1', 'Great success!')
-	});
+  it("has an input box for entering starting isk", () => {
+    cy.get("input#startingIsk").type("number");
+  });
 
-	it('navigates to /about', () => {
-		cy.get('nav a').contains('about').click();
-		cy.url().should('include', '/about');
-	});
-
-	it('navigates to /blog', () => {
-		cy.get('nav a').contains('blog').click();
-		cy.url().should('include', '/blog');
-	});
+  it(" has a label for entering the starting isk", () => {
+    cy.get("label").contains("Starting isk value");
+  });
 });
