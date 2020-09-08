@@ -11,6 +11,7 @@ module.exports = {
         primary: "var(--color-bg-primary)",
         secondary: "var(--color-bg-secondary)",
         active: "var(--color-bg-active)",
+        danger: "var(--color-bg-danger)",
       },
     },
   },

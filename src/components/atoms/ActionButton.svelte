@@ -1,5 +1,6 @@
 <script>
   export let id;
+  export let addClasses = "bg-active";
 </script>
 
 <style>
@@ -11,7 +12,7 @@
 <button
   {id}
   on:click
-  class="w-full flex justify-center items-center bg-active text-inverse my-4 p-4
-    rounded text-lg">
+  class={`w-full flex justify-center items-center
+    text-inverse my-4 p-4 rounded text-lg ${addClasses}`}>
   <slot />
 </button>

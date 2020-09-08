@@ -10,6 +10,7 @@
     --color-bg-primary: #dadada;
     --color-bg-secondary: #fafafa;
     --color-bg-active: #035f87;
+    --color-bg-danger: #850d03;
 
     background-color: var(--color-bg-primary);
     color: var(--color-text-primary);
@@ -22,6 +23,7 @@
     --color-bg-primary: #333;
     --color-bg-secondary: #ddd;
     --color-bg-active: #0490b3;
+    --color-bg-danger: #bf0299;
 
     background-color: var(--color-bg-primary);
     color: var(--color-text-primary);

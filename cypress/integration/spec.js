@@ -28,5 +28,22 @@ describe("General tests", () => {
           JSON.parse(localStorage.getItem("currentRun")).startingIsk
         ).to.equal("1337");
       });
+
+    cy.get("input#startingIsk").invoke("val", "1338").trigger("change");
+
+    cy.get("button#startRun")
+      .click()
+      .should(() => {
+        expect(
+          JSON.parse(localStorage.getItem("currentRun")).startingIsk
+        ).to.equal("1338");
+      });
+  });
+
+  it("there is no more start run button but there is a end run button", () => {
+    cy.get("button#startRun").click();
+
+    cy.get("button#startRun").should("not.exist");
+    cy.get("button#endRun").contains("End your delivery run here");
   });
 });
