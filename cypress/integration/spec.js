@@ -11,4 +11,10 @@ describe("General tests", () => {
   it(" has a label for entering the starting isk", () => {
     cy.get("label").contains("Starting isk value");
   });
+
+  it("has a button to start a run", () => {
+    cy.get("button#startRun").contains(
+      "Tell me your opening balance and then we can get this run started!"
+    );
+  });
 });

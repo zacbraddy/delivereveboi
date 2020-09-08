@@ -9,6 +9,7 @@
 
     if (theme === LIGHT_THEME) {
       document.body.classList.remove(DARK_THEME);
+      document.body.classList.add(LIGHT_THEME);
       currentTheme = LIGHT_THEME;
     }
   });
@@ -27,6 +28,12 @@
     }
   }
 </script>
+
+<style>
+  button {
+    @apply outline-none;
+  }
+</style>
 
 <button id="btnDarkMode" on:click={onClick}>
   <i
