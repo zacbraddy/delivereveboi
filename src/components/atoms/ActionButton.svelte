@@ -13,6 +13,6 @@
   {id}
   on:click
   class={`w-full flex justify-center items-center
-    text-inverse my-4 p-4 rounded text-lg ${addClasses}`}>
+    text-inverse tracking-wider my-4 p-4 rounded text-lg ${addClasses}`}>
   <slot />
 </button>
