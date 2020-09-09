@@ -1,46 +1,67 @@
-<style>
-	h1, figure, p {
-		text-align: center;
-		margin: 0 auto;
-	}
+<script>
+  import { onMount } from "svelte";
+  import DarkModeButton from "../components/atoms/DarkModeButton.svelte";
+  import LabelledInput from "../components/molecules/LabelledInput.svelte";
+  import Header from "../components/molecules/Header.svelte";
+  import StartRun from "../components/molecules/StartRun.svelte";
+  import EndRun from "../components/molecules/EndRun.svelte";
+  import ResetRun from "../components/molecules/ResetRun.svelte";
+  import currentRunStore from "../stores/current-run-store.js";
 
-	h1 {
-		font-size: 2.8em;
-		text-transform: uppercase;
-		font-weight: 700;
-		margin: 0 0 0.5em 0;
-	}
+  onMount(() => {
+    currentRunStore.loadFromLocalStorage();
+  });
 
-	figure {
-		margin: 0 0 1em 0;
-	}
+  function onStartingIskChange(ev) {
+    currentRunStore.setStartingIsk(ev.target.value);
+  }
 
-	img {
-		width: 100%;
-		max-width: 400px;
-		margin: 0 0 1em 0;
-	}
-
-	p {
-		margin: 1em auto;
-	}
-
-	@media (min-width: 480px) {
-		h1 {
-			font-size: 4em;
-		}
-	}
-</style>
+  function onEndingIskChange(ev) {
+    currentRunStore.setEndingIsk(ev.target.value);
+  }
+</script>
 
 <svelte:head>
-	<title>Sapper project template</title>
+  <title>Delivereve Boi</title>
 </svelte:head>
 
-<h1>Great success!</h1>
+<DarkModeButton />
 
-<figure>
-	<img alt='Success Kid' src='successkid.jpg'>
-	<figcaption>Have fun with Sapper!</figcaption>
-</figure>
+<Header />
 
-<p><strong>Try editing this file (src/routes/index.svelte) to test live reloading.</strong></p>
+<LabelledInput
+  id="startingIsk"
+  on:input={onStartingIskChange}
+  on:change={onStartingIskChange}
+  readonly={$currentRunStore.runInProgress}
+  readonlyContent={$currentRunStore.startingIsk}>
+  Starting isk value
+</LabelledInput>
+
+{#if $currentRunStore.runInProgress}
+  <LabelledInput
+    id="endingIsk"
+    on:input={onEndingIskChange}
+    on:change={onEndingIskChange}
+    readonly={$currentRunStore.runComplete}
+    readonlyContent={$currentRunStore.endingIsk}>
+    Ending isk value
+  </LabelledInput>
+{/if}
+
+{#if $currentRunStore.runComplete}
+  <LabelledInput
+    id="profit"
+    readonly={true}
+    readonlyContent={$currentRunStore.profit}>
+    Congrats you made this much isk shifting space stuff!
+  </LabelledInput>
+{/if}
+
+{#if $currentRunStore.runComplete}
+  <ResetRun />
+{:else if $currentRunStore.runInProgress}
+  <EndRun />
+{:else}
+  <StartRun />
+{/if}
