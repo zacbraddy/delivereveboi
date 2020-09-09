@@ -20,23 +20,22 @@ const setEndingIsk = (newEndingIskValue) => {
   set(currentStore);
 };
 
-const setRunInProgress = (newRunInProgressValue) => {
+const startRun = () => {
   const currentStore = get(store);
 
-  currentStore.runInProgress = newRunInProgressValue;
+  currentStore.startingIsk = currentStore.startingIsk || 0;
+  currentStore.runInProgress = true;
 
   set(currentStore);
-};
-
-const storeStartingIsk = () => {
   updateLocalStorage(get(store));
 };
 
 const endRun = () => {
   const currentStore = get(store);
 
-  currentStore.profit =
-    (currentStore.endingIsk || 0) - (currentStore.startingIsk || 0);
+  currentStore.endingIsk = currentStore.endingIsk || 0;
+
+  currentStore.profit = currentStore.endingIsk - currentStore.startingIsk;
   currentStore.runComplete = true;
 
   updateLocalStorage(get(store));
@@ -44,11 +43,21 @@ const endRun = () => {
   set(currentStore);
 };
 
+const resetRun = () => {
+  set({});
+  updateLocalStorage({});
+};
+
+const loadFromLocalStorage = () => {
+  set(JSON.parse(localStorage.getItem("currentRun")) || {});
+};
+
 export default {
   subscribe,
-  setRunInProgress,
+  startRun,
   setStartingIsk,
   setEndingIsk,
-  storeStartingIsk,
   endRun,
+  resetRun,
+  loadFromLocalStorage,
 };

@@ -1,4 +1,5 @@
 <script>
+  import { onMount } from "svelte";
   import DarkModeButton from "../components/atoms/DarkModeButton.svelte";
   import LabelledInput from "../components/molecules/LabelledInput.svelte";
   import Header from "../components/molecules/Header.svelte";
@@ -6,6 +7,10 @@
   import EndRun from "../components/molecules/EndRun.svelte";
   import ResetRun from "../components/molecules/ResetRun.svelte";
   import currentRunStore from "../stores/current-run-store.js";
+
+  onMount(() => {
+    currentRunStore.loadFromLocalStorage();
+  });
 
   function onStartingIskChange(ev) {
     currentRunStore.setStartingIsk(ev.target.value);

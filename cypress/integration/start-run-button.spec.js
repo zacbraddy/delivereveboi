@@ -55,4 +55,9 @@ describe("start run button", () => {
     cy.get("label").contains("Ending isk value");
     cy.get("input#endingIsk").type("number");
   });
+
+  it("sets the starting isk to zero if nothing is entered when the button is pressed", () => {
+    cy.get("button#startRun").click();
+    cy.get("div#startingIsk").contains("0");
+  });
 });

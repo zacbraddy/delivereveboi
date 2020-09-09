@@ -3,8 +3,7 @@
   import currentRunStore from "../../stores/current-run-store";
 
   function startRun() {
-    currentRunStore.storeStartingIsk();
-    currentRunStore.setRunInProgress(true);
+    currentRunStore.startRun();
   }
 </script>
 

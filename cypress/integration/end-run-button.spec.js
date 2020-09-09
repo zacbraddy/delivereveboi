@@ -29,4 +29,9 @@ describe("End run button", () => {
     cy.get("button#endRun").should("not.exist");
     cy.get("button#resetRun").should("exist");
   });
+
+  it("sets the ending isk to zero if nothing is entered when the button is pressed", () => {
+    cy.get("button#endRun").click();
+    cy.get("div#endingIsk").contains("0");
+  });
 });
