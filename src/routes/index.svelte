@@ -6,6 +6,7 @@
   import StartRun from "../components/molecules/StartRun.svelte";
   import EndRun from "../components/molecules/EndRun.svelte";
   import ResetRun from "../components/molecules/ResetRun.svelte";
+  import StationDropDown from "../components/molecules/StationDropDown.svelte";
   import currentRunStore from "../stores/current-run-store.js";
 
   onMount(() => {
@@ -37,6 +38,8 @@
   readonlyContent={$currentRunStore.startingIsk}>
   Starting isk value
 </LabelledInput>
+
+<StationDropDown>Starting station</StationDropDown>
 
 {#if $currentRunStore.runInProgress}
   <LabelledInput
