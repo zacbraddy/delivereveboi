@@ -17,6 +17,10 @@
     currentRunStore.setStartingIsk(ev.target.value);
   }
 
+  function onStartingStationChange(ev) {
+    currentRunStore.setStartingStation(ev.detail.newStation);
+  }
+
   function onEndingIskChange(ev) {
     currentRunStore.setEndingIsk(ev.target.value);
   }
@@ -39,7 +43,11 @@
   Starting isk value
 </LabelledInput>
 
-<StationDropDown>Starting station</StationDropDown>
+<StationDropDown
+  id="startingStation"
+  on:stationChange={onStartingStationChange}>
+  Starting station
+</StationDropDown>
 
 {#if $currentRunStore.runInProgress}
   <LabelledInput

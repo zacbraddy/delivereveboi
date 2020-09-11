@@ -8,8 +8,19 @@ const updateLocalStorage = (newRunValue) => {
 };
 
 const setStartingIsk = (newStartingIskValue) => {
-  const newRunValue = { startingIsk: newStartingIskValue };
-  set(newRunValue);
+  const currentStore = get(store) || {};
+
+  currentStore.startingIsk = newStartingIskValue;
+
+  set(currentStore);
+};
+
+const setStartingStation = (newStartingStation) => {
+  const currentStore = get(store);
+
+  currentStore.startingStation = newStartingStation;
+
+  set(currentStore);
 };
 
 const setEndingIsk = (newEndingIskValue) => {
@@ -56,6 +67,7 @@ export default {
   subscribe,
   startRun,
   setStartingIsk,
+  setStartingStation,
   setEndingIsk,
   endRun,
   resetRun,

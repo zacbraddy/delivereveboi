@@ -178,7 +178,7 @@ export default [
     displayName: "Kamela V - 24th Imperial Crusade Logistic Support",
     distanceFromOtherStations: [
       {
-        station: "Ashged IV",
+        station: "Asghed VI",
         safeDistance: 29,
         unsafeDistance: 5,
         shortDistance: 5,
@@ -191,7 +191,7 @@ export default [
       "Amarr VIII(Oris) - Moon 4 - Exppert Distribution Retail Center",
     distanceFromOtherStations: [
       {
-        station: "Ashged IV",
+        station: "Asghed VI",
         safeDistance: 22,
         unsafeDistance: 34,
         shortDistance: 8,
@@ -203,7 +203,7 @@ export default [
     displayName: "Onnamon IV - State Protectorate Logistic Support",
     distanceFromOtherStations: [
       {
-        station: "Ashged IV",
+        station: "Asghed VI",
         safeDistance: 8,
         unsafeDistance: 28,
         shortDistance: 8,
@@ -216,7 +216,7 @@ export default [
       "Tash-Murkon Prime II - Moon 1 - Kaalakiota Corporation Factory",
     distanceFromOtherStations: [
       {
-        station: "Ashged IV",
+        station: "Asghed VI",
         safeDistance: 23,
         unsafeDistance: 23,
         shortDistance: 10,
@@ -228,7 +228,7 @@ export default [
     displayName: "Kador Prime IX - Moon 2 - Kaalakiota Corporation Factory",
     distanceFromOtherStations: [
       {
-        station: "Ashged IV",
+        station: "Asghed VI",
         safeDistance: 24,
         unsafeDistance: 34,
         shortDistance: 11,
@@ -241,7 +241,7 @@ export default [
       "Pator VII (Kulheim) - Moon 1 - Republic Fleet Testing Facilities",
     distanceFromOtherStations: [
       {
-        station: "Ashged IV",
+        station: "Asghed VI",
         safeDistance: 28,
         unsafeDistance: 18,
         shortDistance: 11,
@@ -253,7 +253,7 @@ export default [
     displayName: "Nakugard VII - Moon 2 - Krusual Tribe Bureau",
     distanceFromOtherStations: [
       {
-        station: "Ashged IV",
+        station: "Asghed VI",
         safeDistance: 30,
         unsafeDistance: 12,
         shortDistance: 12,
@@ -265,7 +265,7 @@ export default [
     displayName: "Nibainkier VII - Ministry of Internal Order Assembly Plant",
     distanceFromOtherStations: [
       {
-        station: "Ashged IV",
+        station: "Asghed VI",
         safeDistance: 26,
         unsafeDistance: 32,
         shortDistance: 12,
@@ -278,7 +278,7 @@ export default [
       "Auvergne V - Moon 5 - Federal Intelligence Office Assembly Plant",
     distanceFromOtherStations: [
       {
-        station: "Ashged IV",
+        station: "Asghed VI",
         safeDistance: 28,
         unsafeDistance: 20,
         shortDistance: 12,
@@ -290,7 +290,7 @@ export default [
     displayName: "Maspah V - Moon 6 - DED Assembly Plant",
     distanceFromOtherStations: [
       {
-        station: "Ashged IV",
+        station: "Asghed VI",
         safeDistance: 32,
         unsafeDistance: 12,
         shortDistance: 12,
@@ -302,7 +302,7 @@ export default [
     displayName: "Renyn X - Moon 14 - Chemal Tech Factory",
     distanceFromOtherStations: [
       {
-        station: "Ashged IV",
+        station: "Asghed VI",
         safeDistance: 24,
         unsafeDistance: 20,
         shortDistance: 13,
@@ -315,7 +315,7 @@ export default [
       "Alikara VI - Moon 14 - Echelon Entertainment Development Studio",
     distanceFromOtherStations: [
       {
-        station: "Ashged IV",
+        station: "Asghed VI",
         safeDistance: 14,
         unsafeDistance: 26,
         shortDistance: 14,
@@ -327,7 +327,7 @@ export default [
     displayName: "Piekura VII - Spacelane Patrol Assembly Plant",
     distanceFromOtherStations: [
       {
-        station: "Ashged IV",
+        station: "Asghed VI",
         safeDistance: 15,
         unsafeDistance: 31,
         shortDistance: 14,
@@ -339,7 +339,7 @@ export default [
     displayName: "Bereye VII - Moon 1 - Material Acquistinn Mineral Reserve",
     distanceFromOtherStations: [
       {
-        station: "Ashged IV",
+        station: "Asghed VI",
         safeDistance: 26,
         unsafeDistance: 14,
         shortDistance: 14,
@@ -351,7 +351,7 @@ export default [
     displayName: "Jita IV - Moon 4 - Caldari Navy Assembly Plant",
     distanceFromOtherStations: [
       {
-        station: "Ashged IV",
+        station: "Asghed VI",
         safeDistance: 15,
         unsafeDistance: 26,
         shortDistance: 15,
@@ -363,7 +363,7 @@ export default [
     displayName: "Istodard IX - Moon 5 - Republic Fleet Assembly Plant",
     distanceFromOtherStations: [
       {
-        station: "Ashged IV",
+        station: "Asghed VI",
         safeDistance: 32,
         unsafeDistance: 25,
         shortDistance: 15,
@@ -375,7 +375,7 @@ export default [
     displayName: "Alentene VII - Moon 1 - Thukker Mix Factory",
     distanceFromOtherStations: [
       {
-        station: "Ashged IV",
+        station: "Asghed VI",
         safeDistance: 27,
         unsafeDistance: 27,
         shortDistance: 16,
@@ -387,7 +387,7 @@ export default [
     displayName: "Ostingale VI - Moon 4 - Federal Freight Storage",
     distanceFromOtherStations: [
       {
-        station: "Ashged IV",
+        station: "Asghed VI",
         safeDistance: 31,
         unsafeDistance: 23,
         shortDistance: 17,
@@ -399,7 +399,7 @@ export default [
     displayName: "EO2-IK VIII - Moon 1 - Astral Mining Inc. Mineral Reserve",
     distanceFromOtherStations: [
       {
-        station: "Ashged IV",
+        station: "Asghed VI",
         safeDistance: 38,
         unsafeDistance: 34,
         shortDistance: 17,
@@ -411,7 +411,7 @@ export default [
     displayName: "Itrin V - Moon 2 - Amarr Trade Registry Information Center",
     distanceFromOtherStations: [
       {
-        station: "Ashged IV",
+        station: "Asghed VI",
         safeDistance: 37,
         unsafeDistance: 30,
         shortDistance: 19,
@@ -423,7 +423,7 @@ export default [
     displayName: "BMNV-P XI - Moon 11 - Intaki Space Police Assembly Plant",
     distanceFromOtherStations: [
       {
-        station: "Ashged IV",
+        station: "Asghed VI",
         safeDistance: 30,
         unsafeDistance: 32,
         shortDistance: 19,
@@ -435,7 +435,7 @@ export default [
     displayName: "4C-B7X V - Moon 7 - Chemal Tech Factory",
     distanceFromOtherStations: [
       {
-        station: "Ashged IV",
+        station: "Asghed VI",
         safeDistance: 35,
         unsafeDistance: 51,
         shortDistance: 24,
@@ -447,7 +447,7 @@ export default [
     displayName: "Heluene X - Material Acquistion Refinery",
     distanceFromOtherStations: [
       {
-        station: "Ashged IV",
+        station: "Asghed VI",
         safeDistance: 45,
         unsafeDistance: 41,
         shortDistance: 28,
@@ -459,7 +459,7 @@ export default [
     displayName: "H-PA29 IV - Moon 2 - Guristas Assembly Plant",
     distanceFromOtherStations: [
       {
-        station: "Ashged IV",
+        station: "Asghed VI",
         safeDistance: 33,
         unsafeDistance: 49,
         shortDistance: 31,
@@ -471,7 +471,7 @@ export default [
     displayName: "G-G78S XI - Moon 3 - Dominations Assembly Plant",
     distanceFromOtherStations: [
       {
-        station: "Ashged IV",
+        station: "Asghed VI",
         safeDistance: 52,
         unsafeDistance: 57,
         shortDistance: 31,
@@ -483,7 +483,7 @@ export default [
     displayName: "UHKL-N V - Moon 1 - Blood Raiders Testing Facilities",
     distanceFromOtherStations: [
       {
-        station: "Ashged IV",
+        station: "Asghed VI",
         safeDistance: 50,
         unsafeDistance: 50,
         shortDistance: 31,
@@ -496,7 +496,7 @@ export default [
       "Serpentis Prime IV - Moon 1 - Serpentis Inquest Biotech Research",
     distanceFromOtherStations: [
       {
-        station: "Ashged IV",
+        station: "Asghed VI",
         safeDistance: 54,
         unsafeDistance: 75,
         shortDistance: 36,
@@ -508,7 +508,7 @@ export default [
     displayName: "9RO-L8 VII - Moon 11 - True Creations Shipyard",
     distanceFromOtherStations: [
       {
-        station: "Ashged IV",
+        station: "Asghed VI",
         safeDistance: 52,
         unsafeDistance: 80,
         shortDistance: 37,
