@@ -1,4 +1,4 @@
-describe("General tests", () => {
+describe("Dark mode tests", () => {
   beforeEach(() => {
     cy.clearLocalStorage();
     cy.visit("/");

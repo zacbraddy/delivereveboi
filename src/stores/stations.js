@@ -1,7 +1,7 @@
 export default [
   {
     id: "Asghed VI",
-    displayName: "Asghed - Moon 5 - Imperial Shipment Storage",
+    displayName: "Asghed VI - Moon 5 - Imperial Shipment Storage",
     distanceFromOtherStations: [
       {
         station: "Kamela V",

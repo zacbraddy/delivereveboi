@@ -24,6 +24,10 @@
   function onEndingIskChange(ev) {
     currentRunStore.setEndingIsk(ev.target.value);
   }
+
+  function getStationDisplayName(stationId) {
+    return currentRunStore.getStationDisplayName(stationId);
+  }
 </script>
 
 <svelte:head>
@@ -45,7 +49,9 @@
 
 <StationDropDown
   id="startingStation"
-  on:stationChange={onStartingStationChange}>
+  on:stationChange={onStartingStationChange}
+  readonly={$currentRunStore.runInProgress}
+  readonlyContent={getStationDisplayName($currentRunStore.startingStation)}>
   Starting station
 </StationDropDown>
 

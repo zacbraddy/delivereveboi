@@ -56,6 +56,15 @@ describe("start run button", () => {
     cy.get("input#endingIsk").type("number");
   });
 
+  it("makes starting station readonly", () => {
+    cy.get("select#startingStation").select("Asghed VI");
+    cy.get("button#startRun").click();
+    cy.get("select#startingStation").should("not.exist");
+    cy.get("div#startingStation").contains(
+      "Asghed VI - Moon 5 - Imperial Shipment Storage"
+    );
+  });
+
   it("sets the starting isk to zero if nothing is entered when the button is pressed", () => {
     cy.get("button#startRun").click();
     cy.get("div#startingIsk").contains("0");
