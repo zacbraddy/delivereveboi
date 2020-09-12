@@ -11,14 +11,4 @@ describe("General tests", () => {
   it("has a label for entering the starting isk", () => {
     cy.get("label").contains("Starting isk value");
   });
-
-  it("loads current run from localStorage onMount", () => {
-    localStorage.setItem(
-      "currentRun",
-      '{ "startingIsk": 1337, "runInProgress": true }'
-    );
-    cy.visit("/");
-
-    cy.get("div#startingIsk").contains("1337");
-  });
 });

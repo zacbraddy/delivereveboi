@@ -6,6 +6,7 @@
   import StartRun from "../components/molecules/StartRun.svelte";
   import EndRun from "../components/molecules/EndRun.svelte";
   import ResetRun from "../components/molecules/ResetRun.svelte";
+  import StationDropDown from "../components/molecules/StationDropDown.svelte";
   import currentRunStore from "../stores/current-run-store.js";
 
   onMount(() => {
@@ -16,8 +17,16 @@
     currentRunStore.setStartingIsk(ev.target.value);
   }
 
+  function onStartingStationChange(ev) {
+    currentRunStore.setStartingStation(ev.detail.newStation);
+  }
+
   function onEndingIskChange(ev) {
     currentRunStore.setEndingIsk(ev.target.value);
+  }
+
+  function getStationDisplayName(stationId) {
+    return currentRunStore.getStationDisplayName(stationId);
   }
 </script>
 
@@ -37,6 +46,14 @@
   readonlyContent={$currentRunStore.startingIsk}>
   Starting isk value
 </LabelledInput>
+
+<StationDropDown
+  id="startingStation"
+  on:stationChange={onStartingStationChange}
+  readonly={$currentRunStore.runInProgress}
+  readonlyContent={getStationDisplayName($currentRunStore.startingStation)}>
+  Starting station
+</StationDropDown>
 
 {#if $currentRunStore.runInProgress}
   <LabelledInput

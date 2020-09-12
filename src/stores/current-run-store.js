@@ -1,4 +1,5 @@
 import { get, writable } from "svelte/store";
+import stations from "./stations.js";
 
 const store = writable({});
 const { subscribe, set } = store;
@@ -8,8 +9,19 @@ const updateLocalStorage = (newRunValue) => {
 };
 
 const setStartingIsk = (newStartingIskValue) => {
-  const newRunValue = { startingIsk: newStartingIskValue };
-  set(newRunValue);
+  const currentStore = get(store) || {};
+
+  currentStore.startingIsk = newStartingIskValue;
+
+  set(currentStore);
+};
+
+const setStartingStation = (newStartingStation) => {
+  const currentStore = get(store);
+
+  currentStore.startingStation = newStartingStation;
+
+  set(currentStore);
 };
 
 const setEndingIsk = (newEndingIskValue) => {
@@ -52,12 +64,20 @@ const loadFromLocalStorage = () => {
   set(JSON.parse(localStorage.getItem("currentRun")) || {});
 };
 
+const getStationDisplayName = (stationId) => {
+  const stationData = stations.find((s) => s.id === stationId) || {};
+
+  return stationData.displayName;
+};
+
 export default {
   subscribe,
   startRun,
   setStartingIsk,
+  setStartingStation,
   setEndingIsk,
   endRun,
   resetRun,
   loadFromLocalStorage,
+  getStationDisplayName,
 };
