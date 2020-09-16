@@ -13,6 +13,10 @@ module.exports = {
         active: "var(--color-bg-active)",
         danger: "var(--color-bg-danger)",
       },
+      borderColor: {
+        primary: "var(--color-border-primary)",
+        secondary: "var(--color-border-secondary)",
+      },
     },
   },
   variants: {},

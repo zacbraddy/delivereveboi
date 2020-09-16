@@ -92,4 +92,10 @@ describe("start run button", () => {
         ).to.equal("Asghed VI");
       });
   });
+
+  it("shows a new RunForm", () => {
+    cy.get("select#startingStation").select("Asghed VI");
+    cy.get("button#startRun").click();
+    cy.get("div#runForm").should("exist");
+  });
 });
