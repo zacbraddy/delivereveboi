@@ -9,10 +9,24 @@ describe("run form", () => {
   });
 
   it("shows an add station button", () => {
-    cy.get("button#btnAddStation").should("exist");
+    cy.get("button#addStation").should("exist");
   });
 
   it("show a station drop down to for the add button to use", () => {
-    cy.get("select#selAddStation").should("exist");
+    cy.get("select#addStation").should("exist");
+  });
+
+  it("should add a station entry when you click the add button", () => {
+    cy.get("select#addStation").select("Kamela V");
+    cy.get("button#addStation").click();
+    cy.get(".station").contains(
+      "Kamela V - 24th Imperial Crusade Logistic Support"
+    );
+  });
+
+  it("when a station is in the box list already it should no longer be in the add station dropdown", () => {
+    cy.get("select#addStation").select("Kamela V");
+    cy.get("button#addStation").click();
+    cy.get(`select#addStation > option[value="Kamela V"]`).should("not.exist");
   });
 });

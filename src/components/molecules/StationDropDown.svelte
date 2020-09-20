@@ -1,22 +1,44 @@
 <script>
-  import { createEventDispatcher } from "svelte";
-  import stations from "../../stores/stations";
+  import { beforeUpdate, createEventDispatcher } from "svelte";
+  import rawStations from "../../stores/stations";
 
   export let id;
   export let readonly = false;
   export let readonlyContent = "";
+  export let hideLabel = false;
+  export let removeStations = [];
+
+  let stations = [];
+  let currentlySelectedStation = "";
 
   const dispatch = createEventDispatcher();
 
+  beforeUpdate(() => {
+    stations = rawStations
+      .filter((s) => removeStations.indexOf(s.id) === -1)
+      .sort((a, b) => (a.displayName < b.displayName ? -1 : 1));
+
+    if (!stations.find((s) => s.id === currentlySelectedStation)) {
+      currentlySelectedStation = stations[0].id;
+
+      dispatch("stationChange", {
+        newStation: stations[0].id,
+      });
+    }
+  });
+
   function stationChange(ev) {
+    currentlySelectedStation = ev.target.value;
+
     dispatch("stationChange", {
-      newStation: ev.target.value,
+      newStation: currentlySelectedStation,
     });
+    console.log("stationchange end", currentlySelectedStation);
   }
 </script>
 
 <div class="my-4 w-full">
-  <label for={id} class="font-bold"><slot /></label>
+  <label for={id} class:hidden={hideLabel} class="font-bold"><slot /></label>
   {#if readonly}
     <div
       {id}
@@ -28,9 +50,10 @@
     <select
       {id}
       on:change={stationChange}
+      bind:value={currentlySelectedStation}
       class="w-full p-2 rounded-lg bg-secondary text-secondary">
-      <option value="default" class="bg-primary">Select a Station</option>
-      {#each stations as s}
+      <option class="hidden" />
+      {#each stations as s, i (s.id)}
         <option value={s.id} class="bg-primary">{s.displayName}</option>
       {/each}
     </select>
