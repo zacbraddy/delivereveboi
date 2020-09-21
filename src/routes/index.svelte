@@ -1,5 +1,6 @@
 <script>
   import { onMount } from "svelte";
+  import { get } from "svelte/store";
   import DarkModeButton from "../components/atoms/DarkModeButton.svelte";
   import LabelledInput from "../components/molecules/LabelledInput.svelte";
   import Header from "../components/molecules/Header.svelte";
@@ -19,7 +20,9 @@
   }
 
   function onStartingStationChange(ev) {
+    console.log("here", ev.detail);
     currentRunStore.setStartingStation(ev.detail.newStation);
+    console.log("here1", get(currentRunStore));
   }
 
   function onEndingIskChange(ev) {

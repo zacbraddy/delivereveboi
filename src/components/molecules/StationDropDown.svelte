@@ -1,5 +1,5 @@
 <script>
-  import { beforeUpdate, createEventDispatcher } from "svelte";
+  import { beforeUpdate, createEventDispatcher, onMount } from "svelte";
   import rawStations from "../../stores/stations";
 
   export let id;
@@ -9,9 +9,21 @@
   export let removeStations = [];
 
   let stations = [];
-  let currentlySelectedStation = "";
+  let currentlySelectedStation = rawStations[0].id;
 
   const dispatch = createEventDispatcher();
+
+  onMount(() => {
+    stations = rawStations
+      .filter((s) => removeStations.indexOf(s.id) === -1)
+      .sort((a, b) => (a.displayName < b.displayName ? -1 : 1));
+
+    currentlySelectedStation = stations[0].id;
+
+    dispatch("stationChange", {
+      newStation: stations[0].id,
+    });
+  });
 
   beforeUpdate(() => {
     stations = rawStations
@@ -54,7 +66,12 @@
       class="w-full p-2 rounded-lg bg-secondary text-secondary">
       <option class="hidden" />
       {#each stations as s, i (s.id)}
-        <option value={s.id} class="bg-primary">{s.displayName}</option>
+        <option
+          value={s.id}
+          selected={i === 0 ? 'selected' : ''}
+          class="bg-primary">
+          {s.displayName}
+        </option>
       {/each}
     </select>
   {/if}

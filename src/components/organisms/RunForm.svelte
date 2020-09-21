@@ -1,6 +1,7 @@
 <script>
   import AddStation from "../molecules/AddStation.svelte";
   import StationDropDown from "../molecules/StationDropDown.svelte";
+  import StationBoxes from "../molecules/StationBoxes.svelte";
   import stationBoxesStore from "../../stores/station-box-store.js";
 
   function onAddStationChange(ev) {
@@ -12,14 +13,11 @@
   }
 </script>
 
-<div id="runForm" class="border rounded p-6 border-secondary">
+<div id="runForm">
   <h3 class="my-4 font-bold font-lg">Current Route</h3>
-  <div class="border rounded p-4 border-primary">
+  <div class="border rounded p-4 border-secondary">
     {#each $stationBoxesStore as sb}
-      <div class="station">
-        <div>{sb.displayName}</div>
-        <div>{sb.boxes}</div>
-      </div>
+      <StationBoxes stationBox={sb} />
     {/each}
     <StationDropDown
       id="addStation"
