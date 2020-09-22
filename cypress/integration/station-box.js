@@ -11,14 +11,22 @@ describe("station box row", () => {
   });
 
   it("shows an add box button", () => {
-    cy.get("div.station > button.add-button").should("exist");
+    cy.get("div.station button.add-button").should("exist");
   });
 
   it("shows an subtract box button", () => {
-    cy.get("div.station > button.subtract-button").should("exist");
+    cy.get("div.station button.subtract-button").should("exist");
   });
 
   it("shows a delivery button", () => {
-    cy.get("div.station > button.deliver-button").should("exist");
+    cy.get("div.station button.deliver-button").should("exist");
+  });
+
+  it("increments the number of boxes at a station when the add button is clicked", () => {
+    cy.get("div.station button.add-button")
+      .click()
+      .then(() => {
+        cy.get("div.station div.number-of-boxes").contains("2");
+      });
   });
 });

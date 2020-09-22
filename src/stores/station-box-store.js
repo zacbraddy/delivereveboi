@@ -28,8 +28,19 @@ const addStation = () => {
   set(currentBoxes.sort((a, b) => (a.displayName < b.displayName ? -1 : 1)));
 };
 
+const incrementStation = (stationId) => {
+  const currentBoxes = get(store);
+
+  const stationIndex = currentBoxes.findIndex((sb) => sb.id === stationId);
+
+  currentBoxes[stationIndex].boxes += 1;
+
+  set(currentBoxes);
+};
+
 export default {
   subscribe,
   addStation,
+  incrementStation,
   setStationToAdd,
 };
