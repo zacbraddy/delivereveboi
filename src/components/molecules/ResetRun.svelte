@@ -1,9 +1,11 @@
 <script>
   import ActionButton from "../atoms/ActionButton.svelte";
   import currentRunStore from "../../stores/current-run-store";
+  import stationBoxStore from "../../stores/station-box-store";
 
   function resetRun() {
     currentRunStore.resetRun();
+    stationBoxStore.clearLocalStorage();
   }
 </script>
 

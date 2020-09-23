@@ -11,6 +11,8 @@
     --color-bg-secondary: #fafafa;
     --color-bg-active: #035f87;
     --color-bg-danger: #850d03;
+    --color-border-primary: #035f87;
+    --color-border-secondary: #850d03;
 
     background-color: var(--color-bg-primary);
     color: var(--color-text-primary);
@@ -24,6 +26,8 @@
     --color-bg-secondary: #ddd;
     --color-bg-active: #0490b3;
     --color-bg-danger: #bf0299;
+    --color-border-primary: #03cdff;
+    --color-border-secondary: #ff03d1;
 
     background-color: var(--color-bg-primary);
     color: var(--color-text-primary);

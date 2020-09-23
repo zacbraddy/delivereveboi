@@ -1,5 +1,6 @@
 <script>
   import { onMount } from "svelte";
+  import { get } from "svelte/store";
   import DarkModeButton from "../components/atoms/DarkModeButton.svelte";
   import LabelledInput from "../components/molecules/LabelledInput.svelte";
   import Header from "../components/molecules/Header.svelte";
@@ -7,10 +8,13 @@
   import EndRun from "../components/molecules/EndRun.svelte";
   import ResetRun from "../components/molecules/ResetRun.svelte";
   import StationDropDown from "../components/molecules/StationDropDown.svelte";
+  import RunForm from "../components/organisms/RunForm.svelte";
   import currentRunStore from "../stores/current-run-store.js";
+  import currentStationBoxes from "../stores/station-box-store.js";
 
   onMount(() => {
     currentRunStore.loadFromLocalStorage();
+    currentStationBoxes.loadFromLocalStorage();
   });
 
   function onStartingIskChange(ev) {
@@ -54,6 +58,10 @@
   readonlyContent={getStationDisplayName($currentRunStore.startingStation)}>
   Starting station
 </StationDropDown>
+
+{#if $currentRunStore.runInProgress}
+  <RunForm />
+{/if}
 
 {#if $currentRunStore.runInProgress}
   <LabelledInput

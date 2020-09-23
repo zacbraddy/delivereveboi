@@ -1,22 +1,43 @@
 <script>
-  import { createEventDispatcher } from "svelte";
-  import stations from "../../stores/stations";
+  import { createEventDispatcher, onMount } from "svelte";
+  import rawStations from "../../stores/stations";
 
   export let id;
   export let readonly = false;
   export let readonlyContent = "";
+  export let hideLabel = false;
+  export let removeStations = [];
+
+  let stations = [];
+  let currentlySelectedStation;
 
   const dispatch = createEventDispatcher();
 
+  onMount(() => {
+    stations = rawStations
+      .filter((s) => removeStations.indexOf(s.id) === -1)
+      .sort((a, b) => (a.displayName < b.displayName ? -1 : 1));
+
+    setTimeout(() => {
+      currentlySelectedStation = stations[0].id;
+
+      dispatch("stationChange", {
+        newStation: stations[0].id,
+      });
+    }, 100);
+  });
+
   function stationChange(ev) {
+    currentlySelectedStation = ev.target.value;
+
     dispatch("stationChange", {
-      newStation: ev.target.value,
+      newStation: currentlySelectedStation,
     });
   }
 </script>
 
 <div class="my-4 w-full">
-  <label for={id} class="font-bold"><slot /></label>
+  <label for={id} class:hidden={hideLabel} class="font-bold"><slot /></label>
   {#if readonly}
     <div
       {id}
@@ -28,10 +49,17 @@
     <select
       {id}
       on:change={stationChange}
-      class="w-full p-2 rounded-lg bg-secondary text-secondary">
-      <option value="default" class="bg-primary">Select a Station</option>
-      {#each stations as s}
-        <option value={s.id} class="bg-primary">{s.displayName}</option>
+      bind:value={currentlySelectedStation}
+      class="w-full p-2 rounded-lg bg-primary text-secondary border-secondary
+        border rounded-lg focus:outline-none appearance-none">
+      <option class="hidden" />
+      {#each stations as s, i (s.id)}
+        <option
+          value={s.id}
+          class="bg-primary"
+          selected="{i === 0 ? 'selected' : ''}{s.displayName}">
+          {s.displayName}
+        </option>
       {/each}
     </select>
   {/if}
