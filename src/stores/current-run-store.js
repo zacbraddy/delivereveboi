@@ -17,7 +17,7 @@ const setStartingIsk = (newStartingIskValue) => {
 };
 
 const setStartingStation = (newStartingStation) => {
-  const currentStore = get(store);
+  const currentStore = get(store) || {};
 
   currentStore.startingStation = newStartingStation;
 

@@ -40,4 +40,20 @@ describe("run form", () => {
     cy.get("button#addStation").click();
     cy.get(`select#addStation > option[value="Kamela V"]`).should("not.exist");
   });
+
+  it("loads current boxes from localStorage onMount", () => {
+    localStorage.setItem(
+      "currentRun",
+      '{ "startingIsk": 1337, "runInProgress": true }'
+    );
+    localStorage.setItem(
+      "runStationBoxes",
+      '{ "currentBoxes": [{ "id": "Kamela V", "displayName": "Kamela V - 24th Imperial Crusade Logistic Support", "boxes": 1 }]}'
+    );
+    cy.visit("/");
+
+    cy.get(".station").contains(
+      "Kamela V - 24th Imperial Crusade Logistic Support"
+    );
+  });
 });

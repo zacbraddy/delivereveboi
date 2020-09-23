@@ -1,5 +1,5 @@
 <script>
-  import { beforeUpdate, createEventDispatcher, onMount } from "svelte";
+  import { createEventDispatcher, onMount } from "svelte";
   import rawStations from "../../stores/stations";
 
   export let id;
@@ -9,7 +9,7 @@
   export let removeStations = [];
 
   let stations = [];
-  let currentlySelectedStation = rawStations[0].id;
+  let currentlySelectedStation;
 
   const dispatch = createEventDispatcher();
 
@@ -18,25 +18,13 @@
       .filter((s) => removeStations.indexOf(s.id) === -1)
       .sort((a, b) => (a.displayName < b.displayName ? -1 : 1));
 
-    currentlySelectedStation = stations[0].id;
-
-    dispatch("stationChange", {
-      newStation: stations[0].id,
-    });
-  });
-
-  beforeUpdate(() => {
-    stations = rawStations
-      .filter((s) => removeStations.indexOf(s.id) === -1)
-      .sort((a, b) => (a.displayName < b.displayName ? -1 : 1));
-
-    if (!stations.find((s) => s.id === currentlySelectedStation)) {
+    setTimeout(() => {
       currentlySelectedStation = stations[0].id;
 
       dispatch("stationChange", {
         newStation: stations[0].id,
       });
-    }
+    }, 100);
   });
 
   function stationChange(ev) {
@@ -45,7 +33,6 @@
     dispatch("stationChange", {
       newStation: currentlySelectedStation,
     });
-    console.log("stationchange end", currentlySelectedStation);
   }
 </script>
 
@@ -63,13 +50,14 @@
       {id}
       on:change={stationChange}
       bind:value={currentlySelectedStation}
-      class="w-full p-2 rounded-lg bg-secondary text-secondary">
+      class="w-full p-2 rounded-lg bg-primary text-secondary border-secondary
+        border rounded-lg focus:outline-none appearance-none">
       <option class="hidden" />
       {#each stations as s, i (s.id)}
         <option
           value={s.id}
-          selected={i === 0 ? 'selected' : ''}
-          class="bg-primary">
+          class="bg-primary"
+          selected="{i === 0 ? 'selected' : ''}{s.displayName}">
           {s.displayName}
         </option>
       {/each}

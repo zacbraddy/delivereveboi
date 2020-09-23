@@ -17,4 +17,20 @@ describe("Reset run button", () => {
     cy.get("div#endingIsk").should("not.exist");
     cy.get("button#endRun").should("not.exist");
   });
+
+  it("clears local storage", () => {
+    cy.get("button#resetRun")
+      .click()
+      .should(() => {
+        expect(JSON.parse(localStorage.getItem("currentRun"))).to.deep.equal(
+          {}
+        );
+        expect(
+          JSON.parse(localStorage.getItem("runStationBoxes"))
+        ).to.deep.equal({
+          currentBoxes: [],
+          stationsVisited: [],
+        });
+      });
+  });
 });

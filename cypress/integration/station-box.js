@@ -30,12 +30,35 @@ describe("station box row", () => {
       });
   });
 
+  it("saves the station entry changes to localStorage when add button is clicked", () => {
+    cy.get("div.station button.add-button")
+      .click()
+      .should(() => {
+        expect(
+          JSON.parse(localStorage.getItem("runStationBoxes")).currentBoxes[0]
+            .boxes
+        ).to.equal(2);
+      });
+  });
+
   it("decrements the number of boxes at the station when the subtract button is clicked", () => {
     cy.get("div.station button.add-button").click();
     cy.get("div.station button.subtract-button")
       .click()
       .then(() => {
         cy.get("div.station div.number-of-boxes").contains("1");
+      });
+  });
+
+  it("saves the station entry changes to localStorage when subtract button is clicked", () => {
+    cy.get("div.station button.add-button").click();
+    cy.get("div.station button.subtract-button")
+      .click()
+      .should(() => {
+        expect(
+          JSON.parse(localStorage.getItem("runStationBoxes")).currentBoxes[0]
+            .boxes
+        ).to.equal(1);
       });
   });
 
@@ -52,6 +75,17 @@ describe("station box row", () => {
       .click()
       .then(() => {
         cy.get("div.station").should("not.exist");
+      });
+  });
+
+  it("save the station entry changes to localStorage when deliver button is clicked", () => {
+    cy.get("div.station button.deliver-button")
+      .click()
+      .should(() => {
+        expect(
+          JSON.parse(localStorage.getItem("runStationBoxes")).currentBoxes
+            .length
+        ).to.equal(0);
       });
   });
 });

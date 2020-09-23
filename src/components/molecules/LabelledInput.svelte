@@ -29,8 +29,8 @@
       type="number"
       on:input
       on:change
-      class="bg-secondary text-secondary py-2 px-2 block w-full appearance-none
-        leading-normal border border-transparent rounded-lg focus:outline-none
+      class="bg-primary text-secondary py-2 px-2 block w-full appearance-none
+        leading-normal border rounded-lg focus:outline-none border-secondary
         text-left select-none truncate shadow-md" />
   {/if}
 </div>

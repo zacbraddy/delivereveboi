@@ -14,6 +14,7 @@
 
   onMount(() => {
     currentRunStore.loadFromLocalStorage();
+    currentStationBoxes.loadFromLocalStorage();
   });
 
   function onStartingIskChange(ev) {

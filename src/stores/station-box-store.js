@@ -48,7 +48,10 @@ const incrementStation = (stationId) => {
 
   currentBoxes[stationIndex].boxes += 1;
 
-  set({ ...currentStore, currentBoxes });
+  const newBoxesValue = { ...currentStore, currentBoxes };
+
+  set(newBoxesValue);
+  updateLocalStorage(newBoxesValue);
 };
 
 const decrementStation = (stationId) => {
@@ -62,7 +65,10 @@ const decrementStation = (stationId) => {
       ? currentBoxes[stationIndex].boxes - 1
       : 1;
 
-  set({ ...currentStore, currentBoxes });
+  const newBoxesValue = { ...currentStore, currentBoxes };
+
+  set(newBoxesValue);
+  updateLocalStorage(newBoxesValue);
 };
 
 const deliverToStation = (stationId) => {
@@ -75,14 +81,35 @@ const deliverToStation = (stationId) => {
 
   currentStore.stationsVisited.push(stationVisited);
 
-  set({ ...currentStore, currentBoxes });
+  const newBoxesValue = { ...currentStore, currentBoxes };
+
+  set(newBoxesValue);
+  updateLocalStorage(newBoxesValue);
+};
+
+const loadFromLocalStorage = () => {
+  set(
+    JSON.parse(localStorage.getItem("runStationBoxes")) || {
+      currentBoxes: [],
+      stationsVisited: [],
+    }
+  );
+};
+
+const clearLocalStorage = () => {
+  updateLocalStorage({
+    currentBoxes: [],
+    stationsVisited: [],
+  });
 };
 
 export default {
   addStation,
+  clearLocalStorage,
   decrementStation,
   deliverToStation,
   incrementStation,
+  loadFromLocalStorage,
   setStationToAdd,
   subscribe,
 };
