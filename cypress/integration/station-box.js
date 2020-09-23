@@ -29,4 +29,29 @@ describe("station box row", () => {
         cy.get("div.station div.number-of-boxes").contains("2");
       });
   });
+
+  it("decrements the number of boxes at the station when the subtract button is clicked", () => {
+    cy.get("div.station button.add-button").click();
+    cy.get("div.station button.subtract-button")
+      .click()
+      .then(() => {
+        cy.get("div.station div.number-of-boxes").contains("1");
+      });
+  });
+
+  it("does not decrement if the number of boxes at a station is 1", () => {
+    cy.get("div.station button.subtract-button")
+      .click()
+      .then(() => {
+        cy.get("div.station div.number-of-boxes").contains("1");
+      });
+  });
+
+  it("removes the station when you click the deliver button", () => {
+    cy.get("div.station button.deliver-button")
+      .click()
+      .then(() => {
+        cy.get("div.station").should("not.exist");
+      });
+  });
 });

@@ -24,6 +24,17 @@ describe("run form", () => {
     );
   });
 
+  it("saves the station entry station to localStorage", () => {
+    cy.get("select#addStation").select("Kamela V");
+    cy.get("button#addStation")
+      .click()
+      .should(() => {
+        expect(
+          JSON.parse(localStorage.getItem("runStationBoxes")).currentBoxes[0].id
+        ).to.equal("Kamela V");
+      });
+  });
+
   it("when a station is in the box list already it should no longer be in the add station dropdown", () => {
     cy.get("select#addStation").select("Kamela V");
     cy.get("button#addStation").click();

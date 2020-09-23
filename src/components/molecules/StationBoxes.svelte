@@ -6,6 +6,14 @@
   function incrementBoxes() {
     stationBoxStore.incrementStation(stationBox.id);
   }
+
+  function decrementBoxes() {
+    stationBoxStore.decrementStation(stationBox.id);
+  }
+
+  function deliverToStation() {
+    stationBoxStore.deliverToStation(stationBox.id);
+  }
 </script>
 
 <div class="station flex flex-col border border-primary rounded p-2 my-4">
@@ -15,6 +23,7 @@
   </div>
   <div class="flex justify-between my-2">
     <button
+      on:click={decrementBoxes}
       class="subtract-button w-full h-8 bg-danger font-xl font-bold text-inverse
         rounded-l">-</button>
     <button
@@ -24,6 +33,7 @@
   </div>
   <div class="my-2">
     <button
+      on:click={deliverToStation}
       class="deliver-button w-full h-8 bg-active font-xl font-bold text-inverse
         rounded">Deliver</button>
   </div>

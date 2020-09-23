@@ -10,6 +10,7 @@
   import StationDropDown from "../components/molecules/StationDropDown.svelte";
   import RunForm from "../components/organisms/RunForm.svelte";
   import currentRunStore from "../stores/current-run-store.js";
+  import currentStationBoxes from "../stores/station-box-store.js";
 
   onMount(() => {
     currentRunStore.loadFromLocalStorage();
@@ -20,9 +21,7 @@
   }
 
   function onStartingStationChange(ev) {
-    console.log("here", ev.detail);
     currentRunStore.setStartingStation(ev.detail.newStation);
-    console.log("here1", get(currentRunStore));
   }
 
   function onEndingIskChange(ev) {
