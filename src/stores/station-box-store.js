@@ -105,7 +105,9 @@ const clearLocalStorage = () => {
 
 const getNextBestDestination = () => {
   const currentStore = get(store);
-  const { currentBoxes } = currentStore;
+  const { currentBoxes = [] } = currentStore;
+
+  if (currentBoxes.length === 0) return "";
 
   const bestStation = currentBoxes.reduce((currentBest, currentValue) =>
     currentValue.boxes > currentBest.boxes ? currentBest : currentValue

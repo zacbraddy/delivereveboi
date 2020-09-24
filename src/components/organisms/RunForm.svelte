@@ -28,7 +28,9 @@
   <div class="border rounded p-4 border-secondary">
     {#if $stationBoxesStore.currentBoxes.length}
       <div class="text-primary font-bold">Best next destination</div>
-      <div class="text-secondary font-bold">{currentBestDestination}</div>
+      <div class="suggested text-secondary font-bold">
+        {currentBestDestination}
+      </div>
     {/if}
     {#each $stationBoxesStore.currentBoxes as sb}
       <StationBoxes stationBox={sb} />

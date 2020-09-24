@@ -58,12 +58,14 @@ describe("run form", () => {
   });
 
   it("shows a suggested best next station", () => {
+    cy.get("select#addStation").select("Asghed VI");
+    cy.get("button#addStation").click();
+    cy.get("button.add-button").click();
     cy.get("select#addStation").select("Kamela V");
     cy.get("button#addStation").click();
-    cy.get("div.add-button").click();
-    cy.get("select#addStation").select("Ashged VI");
-    cy.get("button#addStation").click();
 
-    cy.get("div.suggested").contains("Kamela V");
+    cy.get("div.suggested").contains(
+      "Kamela V - 24th Imperial Crusade Logistic Support"
+    );
   });
 });
