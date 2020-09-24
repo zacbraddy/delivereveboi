@@ -103,11 +103,23 @@ const clearLocalStorage = () => {
   });
 };
 
+const getNextBestDestination = () => {
+  const currentStore = get(store);
+  const { currentBoxes } = currentStore;
+
+  const bestStation = currentBoxes.reduce((currentBest, currentValue) =>
+    currentValue.boxes > currentBest.boxes ? currentBest : currentValue
+  );
+
+  return bestStation.displayName;
+};
+
 export default {
   addStation,
   clearLocalStorage,
   decrementStation,
   deliverToStation,
+  getNextBestDestination,
   incrementStation,
   loadFromLocalStorage,
   setStationToAdd,
