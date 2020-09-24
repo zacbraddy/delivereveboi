@@ -1,5 +1,5 @@
 <script>
-  import { createEventDispatcher, onMount } from "svelte";
+  import { beforeUpdate, createEventDispatcher, onMount } from "svelte";
   import rawStations from "../../stores/stations";
 
   export let id;
@@ -25,6 +25,12 @@
         newStation: stations[0].id,
       });
     }, 100);
+  });
+
+  beforeUpdate(() => {
+    stations = rawStations
+      .filter((s) => removeStations.indexOf(s.id) === -1)
+      .sort((a, b) => (a.displayName < b.displayName ? -1 : 1));
   });
 
   function stationChange(ev) {
